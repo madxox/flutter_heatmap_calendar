@@ -115,6 +115,7 @@ class HeatMapCalendarRow extends StatelessWidget {
                   borderRadius: borderRadius,
                   margin: margin,
                   onClick: onClick,
+                  borderColor: colorsets?.values.first ?? Colors.blue,
                   // If datasets has DateTime key which is equal to this HeatMapContainer's date,
                   // we have to color the matched HeatMapContainer.
                   //

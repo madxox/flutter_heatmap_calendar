@@ -37,37 +37,37 @@ class HeatMapContainer extends StatelessWidget {
         date.day == DateTime.now().day;
 
     return Padding(
-      padding: margin ?? const EdgeInsets.all(2),
-      child: GestureDetector(
-        child: Container(
-          decoration: BoxDecoration(
-            color: backgroundColor ?? HeatMapColor.defaultColor,
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? 5)),
-            border: isToday
-                ? Border.all(
-                    color: borderColor.withValues(alpha: 0.8), width: 2)
-                : null,
-            boxShadow: isToday
-                ? [
-                    BoxShadow(
-                      color: borderColor.withValues(alpha: 0.5),
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                    ),
-                    BoxShadow(
-                      color: borderColor.withValues(alpha: 0.3),
-                      blurRadius: 12,
-                      spreadRadius: 4,
-                    ),
-                  ]
-                : null,
-          ),
+        padding: margin ?? const EdgeInsets.all(2),
+        child: GestureDetector(
+          onTap: () => onClick?.call(date),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeInOutQuad,
             width: size,
             height: size,
             alignment: Alignment.center,
+            duration: const Duration(milliseconds: 300),
+            decoration: BoxDecoration(
+              color:
+                  selectedColor ?? backgroundColor ?? HeatMapColor.defaultColor,
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5)),
+              border: isToday
+                  ? Border.all(color: borderColor.withAlpha(200), width: 2)
+                  : Border.all(color: Colors.transparent, width: 2),
+              boxShadow: isToday
+                  ? [
+                      BoxShadow(
+                        color: borderColor.withAlpha(128),
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                      ),
+                      BoxShadow(
+                        color: borderColor.withAlpha(77),
+                        blurRadius: 12,
+                        spreadRadius: 4,
+                      ),
+                    ]
+                  : null,
+            ),
             child: (showText ?? true)
                 ? Text(
                     date.day.toString(),
@@ -76,17 +76,7 @@ class HeatMapContainer extends StatelessWidget {
                         fontSize: fontSize),
                   )
                 : null,
-            decoration: BoxDecoration(
-              color: selectedColor,
-              borderRadius:
-                  BorderRadius.all(Radius.circular(borderRadius ?? 5)),
-            ),
           ),
-        ),
-        onTap: () {
-          onClick != null ? onClick!(date) : null;
-        },
-      ),
-    );
+        ));
   }
 }
