@@ -119,7 +119,7 @@ class HeatMapColumn extends StatelessWidget {
                     // Color the container with first value of colorsets
                     // and set opacity value to current day's datasets key
                     // devided by maxValue which is the maximum value of the month.
-                    ? colorsets?.values.first.withValues(
+                    ? colorsets.values.first.withValues(
                         alpha: (datasets?[DateTime(
                                     startDate.year,
                                     startDate.month,
