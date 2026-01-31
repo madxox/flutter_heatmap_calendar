@@ -29,6 +29,11 @@ class HeatMapContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Highlight today in the calendar
+    final bool isToday = date.year == DateTime.now().year &&
+        date.month == DateTime.now().month &&
+        date.day == DateTime.now().day;
+
     return Padding(
       padding: margin ?? const EdgeInsets.all(2),
       child: GestureDetector(
@@ -36,6 +41,25 @@ class HeatMapContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor ?? HeatMapColor.defaultColor,
             borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? 5)),
+            border: isToday
+                ? Border.all(color: Colors.white.withOpacity(0.8), width: 2)
+                : null,
+
+            // The secret sauce: BoxShadow for the illumination
+            boxShadow: isToday
+                ? [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.5),
+                      blurRadius: 8,
+                      spreadRadius: 2,
+                    ),
+                    BoxShadow(
+                      color: (backgroundColor ?? Colors.blue).withOpacity(0.3),
+                      blurRadius: 12,
+                      spreadRadius: 4,
+                    ),
+                  ]
+                : null,
           ),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
