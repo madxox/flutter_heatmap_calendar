@@ -42,19 +42,21 @@ class HeatMapContainer extends StatelessWidget {
             color: backgroundColor ?? HeatMapColor.defaultColor,
             borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? 5)),
             border: isToday
-                ? Border.all(color: Colors.white.withOpacity(0.8), width: 2)
+                ? Border.all(
+                    color: Colors.white.withValues(alpha: 0.8), width: 2)
                 : null,
 
             // The secret sauce: BoxShadow for the illumination
             boxShadow: isToday
                 ? [
                     BoxShadow(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: 0.5),
                       blurRadius: 8,
                       spreadRadius: 2,
                     ),
                     BoxShadow(
-                      color: (backgroundColor ?? Colors.blue).withOpacity(0.3),
+                      color: (backgroundColor ?? Colors.blue)
+                          .withValues(alpha: 0.3),
                       blurRadius: 12,
                       spreadRadius: 4,
                     ),
