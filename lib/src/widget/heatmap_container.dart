@@ -60,7 +60,7 @@ class HeatMapContainer extends StatelessWidget {
                       BoxShadow(
                         color: borderColor.withAlpha(200),
                         blurRadius: 4,
-                        spreadRadius: 4,
+                        spreadRadius: 2,
                       ),
                     ]
                   : null,
