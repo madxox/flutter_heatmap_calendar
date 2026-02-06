@@ -49,8 +49,7 @@ class HeatMapContainer extends StatelessWidget {
             alignment: Alignment.center,
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
-              color:
-                  selectedColor ?? backgroundColor ?? HeatMapColor.defaultColor,
+              color: backgroundColor ?? HeatMapColor.defaultColor,
               borderRadius:
                   BorderRadius.all(Radius.circular(borderRadius ?? 5)),
               border: isMarked
@@ -59,9 +58,9 @@ class HeatMapContainer extends StatelessWidget {
               boxShadow: isMarked
                   ? [
                       BoxShadow(
-                        color: borderColor.withAlpha(160),
+                        color: borderColor.withAlpha(200),
                         blurRadius: 4,
-                        spreadRadius: 2,
+                        spreadRadius: 4,
                       ),
                     ]
                   : null,

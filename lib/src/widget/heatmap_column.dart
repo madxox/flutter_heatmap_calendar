@@ -105,7 +105,7 @@ class HeatMapColumn extends StatelessWidget {
             fontSize: fontSize,
             textColor: textColor,
             borderRadius: borderRadius,
-            borderColor: colorsets!.values.first,
+            borderColor: colorsets!.values.last,
             margin: margin,
             onClick: onClick,
             showText: showText,
