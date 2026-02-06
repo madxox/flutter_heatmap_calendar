@@ -53,6 +53,9 @@ class HeatMap extends StatefulWidget {
   /// Parameter gives clicked [DateTime] value.
   final Function(DateTime)? onClick;
 
+  /// The currently clicked on date
+  final DateTime activeDate;
+
   /// The margin value for every block.
   final EdgeInsets? margin;
 
@@ -90,6 +93,7 @@ class HeatMap extends StatefulWidget {
   const HeatMap({
     Key? key,
     required this.colorsets,
+    required this.activeDate,
     this.colorMode = ColorMode.opacity,
     this.startDate,
     this.endDate,
@@ -146,6 +150,7 @@ class _HeatMap extends State<HeatMap> {
           onClick: widget.onClick,
           margin: widget.margin,
           showText: widget.showText,
+          activeDate: widget.activeDate,
         )),
 
         // Show HeatMapColorTip if showColorTip is true.

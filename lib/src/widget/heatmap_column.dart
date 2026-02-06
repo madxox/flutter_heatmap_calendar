@@ -69,9 +69,12 @@ class HeatMapColumn extends StatelessWidget {
   /// Show day text in every blocks if the value is true.
   final bool? showText;
 
-  // The number of day blocks to draw. This should be seven for all but the
-  // current week.
+  /// The number of day blocks to draw. This should be seven for all but the
+  /// current week.
   final int numDays;
+
+  /// The day currently clicked; default is today
+  final DateTime activeDate;
 
   HeatMapColumn({
     Key? key,
@@ -79,6 +82,7 @@ class HeatMapColumn extends StatelessWidget {
     required this.endDate,
     required this.colorMode,
     required this.numDays,
+    required this.activeDate,
     this.size,
     this.fontSize,
     this.defaultColor,
@@ -105,6 +109,7 @@ class HeatMapColumn extends StatelessWidget {
             margin: margin,
             onClick: onClick,
             showText: showText,
+            activeDate: activeDate,
             // If datasets has DateTime key which is equal to this HeatMapContainer's date,
             // we have to color the matched HeatMapContainer.
             //

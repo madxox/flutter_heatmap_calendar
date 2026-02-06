@@ -65,11 +65,15 @@ class HeatMapCalendarRow extends StatelessWidget {
   /// Paratmeter gives clicked [DateTime] value.
   final Function(DateTime)? onClick;
 
+  /// The date currently clicked
+  final DateTime activeDate;
+
   HeatMapCalendarRow({
     Key? key,
     required this.startDate,
     required this.endDate,
     required this.colorMode,
+    required this.activeDate,
     this.size,
     this.fontSize,
     this.defaultColor,
@@ -115,6 +119,7 @@ class HeatMapCalendarRow extends StatelessWidget {
                   borderRadius: borderRadius,
                   margin: margin,
                   onClick: onClick,
+                  activeDate: activeDate,
                   borderColor: colorsets?.values.first ?? Colors.blue,
                   // If datasets has DateTime key which is equal to this HeatMapContainer's date,
                   // we have to color the matched HeatMapContainer.

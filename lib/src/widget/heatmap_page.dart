@@ -73,6 +73,9 @@ class HeatMapPage extends StatelessWidget {
   /// Paratmeter gives clicked [DateTime] value.
   final Function(DateTime)? onClick;
 
+  /// The date currently clicked
+  final DateTime activeDate;
+
   final bool? showText;
 
   HeatMapPage({
@@ -80,6 +83,7 @@ class HeatMapPage extends StatelessWidget {
     required this.colorMode,
     required this.startDate,
     required this.endDate,
+    required this.activeDate,
     this.size,
     this.fontSize,
     this.datasets,
@@ -114,6 +118,7 @@ class HeatMapPage extends StatelessWidget {
         // To make empty space to future day, we have to pass this HeatMapPage's
         // endDate to HeatMapColumn's endDate.
         startDate: _firstDay,
+        activeDate: activeDate,
         endDate: datePos <= _dateDifferent - 7
             ? DateUtil.changeDay(startDate, datePos + 6)
             : endDate,

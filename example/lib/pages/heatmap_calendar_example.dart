@@ -59,6 +59,7 @@ class _HeatMapCalendarExample extends State<HeatMapCalendarExample> {
 
                 // HeatMapCalendar
                 child: HeatMapCalendar(
+                  activeDate: DateTime.now(),
                   flexible: true,
                   datasets: heatMapDatasets,
                   colorMode:

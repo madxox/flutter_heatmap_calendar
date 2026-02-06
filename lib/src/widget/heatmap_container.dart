@@ -13,11 +13,13 @@ class HeatMapContainer extends StatelessWidget {
   final bool? showText;
   final Function(DateTime dateTime)? onClick;
   final Color borderColor;
+  final DateTime activeDate;
 
   const HeatMapContainer({
     Key? key,
     required this.date,
     required this.borderColor,
+    required this.activeDate,
     this.margin,
     this.size,
     this.fontSize,
@@ -31,10 +33,11 @@ class HeatMapContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Highlight either today, or the date clicked!
     // Highlight today in the calendar
-    final bool isToday = date.year == DateTime.now().year &&
-        date.month == DateTime.now().month &&
-        date.day == DateTime.now().day;
+    final bool isMarked = date.year == activeDate.year &&
+        date.month == activeDate.month &&
+        date.day == activeDate.day;
 
     return Padding(
         padding: margin ?? const EdgeInsets.all(2),
@@ -50,20 +53,15 @@ class HeatMapContainer extends StatelessWidget {
                   selectedColor ?? backgroundColor ?? HeatMapColor.defaultColor,
               borderRadius:
                   BorderRadius.all(Radius.circular(borderRadius ?? 5)),
-              border: isToday
+              border: isMarked
                   ? Border.all(color: borderColor.withAlpha(200), width: 2)
                   : Border.all(color: Colors.transparent, width: 2),
-              boxShadow: isToday
+              boxShadow: isMarked
                   ? [
                       BoxShadow(
-                        color: borderColor.withAlpha(128),
-                        blurRadius: 8,
+                        color: borderColor.withAlpha(160),
+                        blurRadius: 4,
                         spreadRadius: 2,
-                      ),
-                      BoxShadow(
-                        color: borderColor.withAlpha(77),
-                        blurRadius: 12,
-                        spreadRadius: 4,
                       ),
                     ]
                   : null,

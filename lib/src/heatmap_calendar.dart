@@ -74,6 +74,9 @@ class HeatMapCalendar extends StatefulWidget {
   /// Default value is true.
   final bool? showColorTip;
 
+  /// The currently clicked on date
+  final DateTime activeDate;
+
   /// Widgets which shown at left and right side of colorTip.
   ///
   /// First value is the left side widget and second value is the right side widget.
@@ -90,6 +93,7 @@ class HeatMapCalendar extends StatefulWidget {
   const HeatMapCalendar({
     Key? key,
     required this.colorsets,
+    required this.activeDate,
     this.colorMode = ColorMode.opacity,
     this.defaultColor,
     this.datasets,
@@ -228,6 +232,7 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
             colorsets: widget.colorsets,
             borderRadius: widget.borderRadius,
             onClick: widget.onClick,
+            activeDate: widget.activeDate,
           ),
           if (widget.showColorTip == true)
             HeatMapColorTip(
